@@ -37,5 +37,7 @@ BLUETOOTH_ENABLE_FM := false
 endif
 endif
 
+ifeq ($(strip $(BOARD_CONNECTIVITY_VENDOR)), RealTek)
 BOARD_HAVE_BLUETOOTH_RTK := true
+endif
 
