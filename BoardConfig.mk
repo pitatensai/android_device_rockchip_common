@@ -62,9 +62,6 @@ BOARD_ROCKCHIP_VIRTUAL_AB_ENABLE ?= false
 BOARD_SELINUX_ENFORCING ?= false
 
 # Use the non-open-source parts, if they're present
-TARGET_PREBUILT_KERNEL ?= kernel/arch/arm/boot/zImage
-TARGET_PREBUILT_RESOURCE ?= kernel/resource.img
-BOARD_PREBUILT_DTBIMAGE_DIR ?= kernel/arch/arm/boot/dts
 PRODUCT_PARAMETER_TEMPLATE ?= device/rockchip/common/scripts/parameter_tools/parameter.in
 TARGET_BOARD_HARDWARE_EGL ?= mali
 
@@ -250,7 +247,7 @@ PRODUCT_SEPOLICY_SPLIT := true
 BOARD_SEPOLICY_DIRS ?= \
     device/rockchip/common/sepolicy/vendor
 #BOARD_PLAT_PUBLIC_SEPOLICY_DIR ?= device/rockchip/common/sepolicy/public
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR ?= \
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS ?= \
     device/rockchip/common/sepolicy/private \
     device/rockchip/$(TARGET_BOARD_PLATFORM)/sepolicy
 
