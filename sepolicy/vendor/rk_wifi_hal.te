@@ -15,4 +15,4 @@ allow rk_wifi_hal kernel:system module_request;
 dontaudit rk_wifi_hal self:capability { dac_override };
 allow rk_wifi_hal self:capability sys_module;
 
-get_prop(rk_wifi_hal,exported_wifi_prop)
+get_prop(rk_wifi_hal,wifi_hal_prop)

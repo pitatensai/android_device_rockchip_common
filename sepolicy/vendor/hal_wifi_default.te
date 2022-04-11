@@ -12,4 +12,4 @@ allow hal_wifi_default init:unix_stream_socket { connectto };
 allow hal_wifi_default kernel:system module_request;
 dontaudit hal_wifi_default self:capability { dac_override };
 allow hal_wifi_default self:capability sys_module;
-get_prop(hal_wifi_default,exported_wifi_prop)
+get_prop(hal_wifi_default,wifi_hal_prop)
