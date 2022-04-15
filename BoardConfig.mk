@@ -96,7 +96,7 @@ endif
 # For Header V2, set resource.img as second.
 # For Header V3, add vendor_boot and resource.
 ifeq (1,$(strip $(shell expr $(BOARD_BOOT_HEADER_VERSION) \<= 2)))
-BOARD_MKBOOTIMG_ARGS += --second $(TARGET_PREBUILT_RESOURCE)
+#BOARD_MKBOOTIMG_ARGS += --second $(TARGET_PREBUILT_RESOURCE)
 endif
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 
@@ -105,7 +105,7 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 # - header v2 do not have recovery;
 ifneq ($(BOARD_ROCKCHIP_VIRTUAL_AB_ENABLE), true)
 ifneq ($(BOARD_USES_AB_IMAGE), true)
-BOARD_RECOVERY_MKBOOTIMG_ARGS ?= --second $(TARGET_PREBUILT_RESOURCE) --header_version 2
+#BOARD_RECOVERY_MKBOOTIMG_ARGS ?= --second $(TARGET_PREBUILT_RESOURCE) --header_version 2
 ifeq ($(BOARD_AVB_ENABLE), true)
 BOARD_AVB_RECOVERY_KEY_PATH ?= external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_RECOVERY_ALGORITHM ?= SHA256_RSA4096
