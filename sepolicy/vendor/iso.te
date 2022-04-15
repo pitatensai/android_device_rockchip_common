@@ -1,6 +1,5 @@
 type iso, domain, coredomain;
 type iso_exec, exec_type, file_type;
-init_daemon_domain(iso)
 
 dontaudit iso self:capability {dac_override dac_read_search};
 allow iso media_rw_data_file:file r_file_perms;
