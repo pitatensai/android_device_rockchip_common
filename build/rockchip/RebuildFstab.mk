@@ -39,6 +39,10 @@ INSTALLED_RK_VENDOR_FSTAB := $(PRODUCT_OUT)/$(TARGET_COPY_OUT_VENDOR)/etc/$(notd
 $(INSTALLED_RK_VENDOR_FSTAB) : $(rebuild_fstab)
 	$(call copy-file-to-new-target-with-cp)
 
+INSTALLED_RK_VENDOR_FSTAB_2 := $(PRODUCT_OUT)/$(TARGET_COPY_OUT_VENDOR)/etc/recovery.fstab
+$(INSTALLED_RK_VENDOR_FSTAB_2) : $(rebuild_fstab)
+	$(call copy-file-to-new-target-with-cp)
+
 # Header V3, add vendor_boot
 ifeq (1,$(strip $(shell expr $(BOARD_BOOT_HEADER_VERSION) \>= 3)))
 INSTALLED_RK_VENDOR_RAMDISK_FSTAB := $(PRODUCT_OUT)/$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/$(notdir $(rebuild_fstab))
@@ -50,6 +54,14 @@ INSTALLED_RK_RAMDISK_FSTAB := $(PRODUCT_OUT)/$(TARGET_COPY_OUT_RAMDISK)/$(notdir
 $(INSTALLED_RK_RAMDISK_FSTAB) : $(rebuild_fstab)
 	$(call copy-file-to-new-target-with-cp)
 
+# INSTALLED_RK_RAMDISK_FSTAB_2 := $(PRODUCT_OUT)/$(TARGET_COPY_OUT_RAMDISK)/etc/recovery.fstab
+# $(INSTALLED_RK_RAMDISK_FSTAB_2) : $(rebuild_fstab)
+# 	$(call copy-file-to-new-target-with-cp)
+
+INSTALLED_RK_RECOVERY_FSTAB := $(PRODUCT_OUT)/$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/recovery.fstab
+$(INSTALLED_RK_RECOVERY_FSTAB) : $(rebuild_fstab)
+	$(call copy-file-to-new-target-with-cp)
+
 ifeq ($(strip $(BOARD_USES_AB_IMAGE)), true)
 INSTALLED_RK_RECOVERY_FIRST_STAGE_FSTAB := $(PRODUCT_OUT)/$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/$(notdir $(rebuild_fstab))
 $(INSTALLED_RK_RECOVERY_FIRST_STAGE_FSTAB) : $(rebuild_fstab)
@@ -59,7 +71,7 @@ endif # BOARD_USES_AB_IMAGE
 ifeq ($(strip $(BOARD_USES_AB_IMAGE)), true)
 ALL_DEFAULT_INSTALLED_MODULES += $(INSTALLED_RK_VENDOR_FSTAB) $(INSTALLED_RK_RAMDISK_FSTAB) $(INSTALLED_RK_RECOVERY_FIRST_STAGE_FSTAB)
 else
-ALL_DEFAULT_INSTALLED_MODULES += $(INSTALLED_RK_VENDOR_FSTAB) $(INSTALLED_RK_RAMDISK_FSTAB)
+ALL_DEFAULT_INSTALLED_MODULES += $(INSTALLED_RK_VENDOR_FSTAB) $(INSTALLED_RK_RAMDISK_FSTAB) $(INSTALLED_RK_RECOVERY_FSTAB)
 endif
 
 # Header V3, add vendor_boot
