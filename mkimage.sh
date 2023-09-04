@@ -269,4 +269,4 @@ if [ $IS_EBOOK == "true" ]; then
     fi
 fi
 
-chmod a+r -R $IMAGE_PATH/
+chmod -R a+r $IMAGE_PATH/
