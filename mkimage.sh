@@ -56,7 +56,7 @@ BOOT_OTA="ota"
 
 [ $TARGET != $BOOT_OTA -a $TARGET != "withoutkernel" ] && echo "unknow target[${TARGET}],exit!" && exit 0
 
-    if [ ! -f $OUT/kernel ]
+    if [ ! -f $OUT/kernel ] && [ -n "$KERNEL_SRC_PATH" ]
     then
 	    echo "kernel image not fount![$OUT/kernel] "
         read -p "copy kernel from TARGET_PREBUILT_KERNEL[$KERNEL_SRC_PATH] (y/n) n to exit?"
@@ -66,7 +66,7 @@ BOOT_OTA="ota"
                 echo -n "fatal! TARGET_PREBUILT_KERNEL not eixit! " || \
                 echo -n "check you configuration in [${BOARD_CONFIG}] " || exit 0
 
-            cp ${KERNEL_SRC_PATH} $OUT/kernel
+            cp -rf ${KERNEL_SRC_PATH} $OUT/kernel
 
         else
             exit 0
@@ -89,8 +89,10 @@ BOARD_DTBO_IMG=$OUT/rebuild-dtbo.img
 else
 BOARD_DTBO_IMG=$OUT/dtbo.img
 fi
+if [ -f "$BOARD_DTBO_IMG" ]; then
 cp -a $BOARD_DTBO_IMG $IMAGE_PATH/dtbo.img
 echo "done."
+fi
 
 echo "create resource.img..."
 if [ -f "kernel/resource.img" ]; then
@@ -238,7 +240,6 @@ fi
 if [ $TARGET == $BOOT_OTA ]
 then
 if [ "$PRODUCT_USE_DYNAMIC_PARTITIONS" = "true" ]; then
-    make installclean && make -j4 && make dist -j4
     cp -rf  $OUT/obj/PACKAGING/super.img_intermediates/super.img  $IMAGE_PATH/
 fi
 echo -n "create system.img boot.img oem.img vendor.img dtbo.img vbmeta.img for OTA..."
@@ -247,6 +248,10 @@ rm -rf  $IMAGE_PATH/cache.img
 rm -rf  $IMAGE_PATH/recovery-two-step.img
 if [ "$PRODUCT_USE_DYNAMIC_PARTITIONS" = "true" ]; then
     rm -rf  $IMAGE_PATH/super_empty.img
+fi
+if [ "$BOARD_AVB_ENABLE" = "true" ]; then
+    echo "AVB Enable"
+    cp -rf  $OUT/obj/PACKAGING/target_files_intermediates/*-target_files*/VENDOR/etc/recovery.img  $IMAGE_PATH/
 fi
 echo "done."
 fi
@@ -260,7 +265,7 @@ if [ $IS_EBOOK == "true" ]; then
     if [ -f $ebook_logo_tool ]; then
         EINK_LOGO_PATH=${TARGET_DEVICE_DIR}/eink_logo/
         echo -n "create logo.img for uboot/charging/kernel logo"
-        $ebook_logo_tool --uboot-logo $EINK_LOGO_PATH/uboot_logo/uboot.bmp --kernel-logo $EINK_LOGO_PATH/kernel_logo/kernel.bmp --charge-logo $EINK_LOGO_PATH/uboot_logo/battery_0.bmp $EINK_LOGO_PATH/uboot_logo/battery_1.bmp $EINK_LOGO_PATH/uboot_logo/battery_2.bmp $EINK_LOGO_PATH/uboot_logo/battery_3.bmp $EINK_LOGO_PATH/uboot_logo/battery_4.bmp $EINK_LOGO_PATH/uboot_logo/battery_5.bmp $EINK_LOGO_PATH/uboot_logo/battery_fail.bmp --output $IMAGE_PATH/logo.img
+        $ebook_logo_tool --uboot-logo $EINK_LOGO_PATH/uboot_logo/uboot.bmp --kernel-logo $EINK_LOGO_PATH/kernel_logo/kernel.bmp --charge-logo $EINK_LOGO_PATH/uboot_logo/battery_0.bmp $EINK_LOGO_PATH/uboot_logo/battery_1.bmp $EINK_LOGO_PATH/uboot_logo/battery_2.bmp $EINK_LOGO_PATH/uboot_logo/battery_3.bmp $EINK_LOGO_PATH/uboot_logo/battery_4.bmp $EINK_LOGO_PATH/uboot_logo/battery_5.bmp $EINK_LOGO_PATH/uboot_logo/battery_fail.bmp --poweroff-logo $EINK_LOGO_PATH/uboot_logo/poweroff.bmp --output $IMAGE_PATH/logo.img
     fi
 fi
 

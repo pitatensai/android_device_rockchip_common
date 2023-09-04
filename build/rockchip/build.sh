@@ -29,7 +29,6 @@ BUILD_PACKING=false
 BUILD_VARIANT=`get_build_var TARGET_BUILD_VARIANT`
 KERNEL_DTS=""
 BUILD_VERSION=""
-BUILD_JOBS=56
 
 IS_MAC_OS=false
 
@@ -43,6 +42,8 @@ JOB=$((JOB / 2))
 else
 JOB=`sed -n "N;/processor/p" /proc/cpuinfo|wc -l`
 fi
+
+BUILD_JOBS=${JOB}
 
 export IS_MAC_OS=${IS_MAC_OS}
 export JOB=${JOB}
@@ -145,7 +146,11 @@ fi
 fi
 
 if [ "$BUILD_KERNEL_WITH_CLANG" = true ] ; then
+if [ "$IS_MAC_OS" = true ] ; then
+ADDON_ARGS="CC=../prebuilts/clang/host/darwin-x86/clang-r383902b/bin/clang LD=../prebuilts/clang/host/darwin-x86/clang-r383902b/bin/ld.lld"
+else
 ADDON_ARGS="CC=../prebuilts/clang/host/linux-x86/clang-r383902b/bin/clang LD=../prebuilts/clang/host/linux-x86/clang-r383902b/bin/ld.lld"
+fi
 fi
 # build kernel
 if [ "$BUILD_KERNEL" = true ] ; then
