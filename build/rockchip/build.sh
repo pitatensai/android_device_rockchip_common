@@ -140,6 +140,9 @@ else
     cp -rf ${PROJECT_TOP}/device/rockchip/common/external/v8/Android.libbase_linux.bp ${PROJECT_TOP}/external/minijail/Android.libbase.bp
     JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 fi
+
+cp -rf ${PROJECT_TOP}/device/rockchip/common/development/cmds/monkey/src/com/android/commands/monkey/Monkey.java ${PROJECT_TOP}/development/cmds/monkey/src/com/android/commands/monkey/
+
 export JAVA_HOME=${JAVA_HOME}
 export PATH=$JAVA_HOME/bin:$PATH
 export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar
