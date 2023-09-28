@@ -134,15 +134,16 @@ if [ "$IS_MAC_OS" = true ]; then
     # fi
     # cp external/v8/Android.libbase_mac.bp external/v8/Android.libbase.bp
     JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
-    cp -rf ${PROJECT_TOP}/device/rockchip/common/external/v8/Android.libbase_macos.bp ${PROJECT_TOP}/external/minijail/Android.libbase.bp
+    cp -rf ${PROJECT_TOP}/device/rockchip/common/external/v8/Android.libbase_macos.bp ${PROJECT_TOP}/external/v8/Android.libbase.bp
 else
     # cp external/v8/Android.libbase_linux.bp external/v8/Android.libbase.bp
-    cp -rf ${PROJECT_TOP}/device/rockchip/common/external/v8/Android.libbase_linux.bp ${PROJECT_TOP}/external/minijail/Android.libbase.bp
+    cp -rf ${PROJECT_TOP}/device/rockchip/common/external/v8/Android.libbase_linux.bp ${PROJECT_TOP}/external/v8/Android.libbase.bp
     JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 fi
 
 cp -rf ${PROJECT_TOP}/device/rockchip/common/development/cmds/monkey/src/com/android/commands/monkey/Monkey.java ${PROJECT_TOP}/development/cmds/monkey/src/com/android/commands/monkey/
 cp -rf ${PROJECT_TOP}/device/rockchip/common/hardware/ril/rild/rild.rc ${PROJECT_TOP}/hardware/ril/rild/
+cp -rf ${PROJECT_TOP}/device/rockchip/common/external/v8/Android.bp ${PROJECT_TOP}/external/v8/Android.bp
 
 export JAVA_HOME=${JAVA_HOME}
 export PATH=$JAVA_HOME/bin:$PATH
