@@ -36,11 +36,17 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 if [ "$IS_MAC_OS" = true ]; then
+    export PATH=/usr/local/opt/gnu-sed/libexec/gnubin/:${PATH}
+    alias diff=diff3
     JOB=$(sysctl -n hw.logicalcpu)
     JOB=$((JOB / 2))
 else
     JOB=$(sed -n "N;/processor/p" /proc/cpuinfo | wc -l)
 fi
+
+unset NDK_ROOT
+unset SDK_ROOT
+ulimit -S -n 2048
 
 BUILD_JOBS=${JOB}
 
@@ -114,6 +120,10 @@ done
 TARGET_PRODUCT=$(get_build_var TARGET_PRODUCT)
 TARGET_BOARD_PLATFORM=$(get_build_var TARGET_BOARD_PLATFORM)
 
+export PROJECT_TOP=$(gettop)
+
+cp -rf ${PROJECT_TOP}/device/rockchip/common/external/minijail/gen_constants.sh ${PROJECT_TOP}/external/minijail/gen_constants.sh
+
 #set jdk version
 if [ "$IS_MAC_OS" = true ]; then
     # rm -rf external/v8/src/base/include
@@ -124,8 +134,10 @@ if [ "$IS_MAC_OS" = true ]; then
     # fi
     # cp external/v8/Android.libbase_mac.bp external/v8/Android.libbase.bp
     JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+    cp -rf ${PROJECT_TOP}/device/rockchip/common/external/v8/Android.libbase_macos.bp ${PROJECT_TOP}/external/minijail/Android.libbase.bp
 else
     # cp external/v8/Android.libbase_linux.bp external/v8/Android.libbase.bp
+    cp -rf ${PROJECT_TOP}/device/rockchip/common/external/v8/Android.libbase_linux.bp ${PROJECT_TOP}/external/minijail/Android.libbase.bp
     JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 fi
 export JAVA_HOME=${JAVA_HOME}
@@ -145,7 +157,6 @@ fi
 echo "-------------------KERNEL_DTS:$KERNEL_DTS"
 PACK_TOOL_DIR=RKTools/pack_firmware
 IMAGE_PATH=rockdev/Image-$TARGET_PRODUCT
-export PROJECT_TOP=$(gettop)
 
 lunch $TARGET_PRODUCT-$BUILD_VARIANT
 
