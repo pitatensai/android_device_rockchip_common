@@ -142,6 +142,7 @@ else
 fi
 
 cp -rf ${PROJECT_TOP}/device/rockchip/common/development/cmds/monkey/src/com/android/commands/monkey/Monkey.java ${PROJECT_TOP}/development/cmds/monkey/src/com/android/commands/monkey/
+cp -rf ${PROJECT_TOP}/device/rockchip/common/hardware/ril/rild/rild.rc ${PROJECT_TOP}/hardware/ril/rild/
 
 export JAVA_HOME=${JAVA_HOME}
 export PATH=$JAVA_HOME/bin:$PATH
