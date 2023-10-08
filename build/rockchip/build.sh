@@ -144,6 +144,7 @@ fi
 cp -rf ${PROJECT_TOP}/device/rockchip/common/development/cmds/monkey/src/com/android/commands/monkey/Monkey.java ${PROJECT_TOP}/development/cmds/monkey/src/com/android/commands/monkey/
 cp -rf ${PROJECT_TOP}/device/rockchip/common/hardware/ril/rild/rild.rc ${PROJECT_TOP}/hardware/ril/rild/
 cp -rf ${PROJECT_TOP}/device/rockchip/common/external/v8/Android.bp ${PROJECT_TOP}/external/v8/Android.bp
+cp -rf ${PROJECT_TOP}/device/rockchip/common/external/f2fs-tools/Android.bp ${PROJECT_TOP}/external/f2fs-tools/Android.bp
 
 export JAVA_HOME=${JAVA_HOME}
 export PATH=$JAVA_HOME/bin:$PATH
