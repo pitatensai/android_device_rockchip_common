@@ -153,6 +153,7 @@ cp -rf ${PROJECT_TOP}/device/rockchip/common/external/minijail/libminijail.c ${P
 cp -rf ${PROJECT_TOP}/device/rockchip/common/external/tinyalsa/pcm.c ${PROJECT_TOP}/external/tinyalsa/pcm.c
 cp -rf ${PROJECT_TOP}/device/rockchip/common/system/hwservicemanager/ServiceManager.cpp ${PROJECT_TOP}/system/hwservicemanager/ServiceManager.cpp
 cp -rf ${PROJECT_TOP}/device/rockchip/common/system/libhidl/transport/ServiceManagement.cpp ${PROJECT_TOP}/system/libhidl/transport/ServiceManagement.cpp
+cp -rf ${PROJECT_TOP}/device/rockchip/common/system/netd/server/RouteController.cpp ${PROJECT_TOP}/system/netd/server/RouteController.cpp
 
 export JAVA_HOME=${JAVA_HOME}
 export PATH=$JAVA_HOME/bin:$PATH
