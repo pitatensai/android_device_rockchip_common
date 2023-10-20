@@ -151,6 +151,7 @@ cp -rf ${PROJECT_TOP}/device/rockchip/common/external/skia/Android.bp ${PROJECT_
 
 cp -rf ${PROJECT_TOP}/device/rockchip/common/external/minijail/libminijail.c ${PROJECT_TOP}/external/minijail/libminijail.c
 cp -rf ${PROJECT_TOP}/device/rockchip/common/external/tinyalsa/pcm.c ${PROJECT_TOP}/external/tinyalsa/pcm.c
+cp -rf ${PROJECT_TOP}/device/rockchip/common/system/hwservicemanager/ServiceManager.cpp ${PROJECT_TOP}/external/tinyalsa/ServiceManager.cpp
 
 export JAVA_HOME=${JAVA_HOME}
 export PATH=$JAVA_HOME/bin:$PATH
