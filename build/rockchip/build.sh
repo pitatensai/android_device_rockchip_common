@@ -134,10 +134,10 @@ if [ "$IS_MAC_OS" = true ]; then
     # fi
     # cp external/v8/Android.libbase_mac.bp external/v8/Android.libbase.bp
     JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
-    cp -rf ${PROJECT_TOP}/device/rockchip/common/external/v8/Android.libbase_macos.bp ${PROJECT_TOP}/external/v8/Android.libbase.bp
+    cp -rf ${PROJECT_TOP}/device/rockchip/common/external/v8/Android.libbase_macos_bp ${PROJECT_TOP}/external/v8/Android.libbase.bp
 else
     # cp external/v8/Android.libbase_linux.bp external/v8/Android.libbase.bp
-    cp -rf ${PROJECT_TOP}/device/rockchip/common/external/v8/Android.libbase_linux.bp ${PROJECT_TOP}/external/v8/Android.libbase.bp
+    cp -rf ${PROJECT_TOP}/device/rockchip/common/external/v8/Android.libbase_linux_bp ${PROJECT_TOP}/external/v8/Android.libbase.bp
     JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 fi
 
