@@ -155,7 +155,7 @@ cp -rf ${PROJECT_TOP}/device/rockchip/common/system/hwservicemanager/ServiceMana
 cp -rf ${PROJECT_TOP}/device/rockchip/common/system/libhidl/transport/ServiceManagement.cpp ${PROJECT_TOP}/system/libhidl/transport/ServiceManagement.cpp
 cp -rf ${PROJECT_TOP}/device/rockchip/common/system/netd/server/RouteController.cpp ${PROJECT_TOP}/system/netd/server/RouteController.cpp
 
-cp -rf ${PROJECT_TOP}/device/rockchip/common/system/bt/bta/ag/bta_ag_main.cpp ${PROJECT_TOP}/system/bt/bta/ag/bta_ag_main.cpp
+cp -rf ${PROJECT_TOP}/device/rockchip/common/system/bt/bta/ag/bta_ag_main.cc ${PROJECT_TOP}/system/bt/bta/ag/bta_ag_main.cc
 
 export JAVA_HOME=${JAVA_HOME}
 export PATH=$JAVA_HOME/bin:$PATH
