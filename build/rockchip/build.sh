@@ -143,10 +143,10 @@ fi
 
 cp -rf ${PROJECT_TOP}/device/rockchip/common/development/cmds/monkey/src/com/android/commands/monkey/Monkey.java ${PROJECT_TOP}/development/cmds/monkey/src/com/android/commands/monkey/
 cp -rf ${PROJECT_TOP}/device/rockchip/common/hardware/ril/rild/rild.rc ${PROJECT_TOP}/hardware/ril/rild/
-cp -rf ${PROJECT_TOP}/device/rockchip/common/external/v8/Android.bp ${PROJECT_TOP}/external/v8/Android.bp
-cp -rf ${PROJECT_TOP}/device/rockchip/common/external/f2fs-tools/Android.bp ${PROJECT_TOP}/external/f2fs-tools/Android.bp
-cp -rf ${PROJECT_TOP}/device/rockchip/common/external/usb_modeswitch/usb_dongle/Android.mk ${PROJECT_TOP}/external/usb_modeswitch/usb_dongle/Android.mk
-cp -rf ${PROJECT_TOP}/device/rockchip/common/external/skia/Android.bp ${PROJECT_TOP}/external/skia/Android.bp
+cp -rf ${PROJECT_TOP}/device/rockchip/common/external/v8/Android_bp ${PROJECT_TOP}/external/v8/Android.bp
+cp -rf ${PROJECT_TOP}/device/rockchip/common/external/f2fs-tools/Android_bp ${PROJECT_TOP}/external/f2fs-tools/Android.bp
+cp -rf ${PROJECT_TOP}/device/rockchip/common/external/usb_modeswitch/usb_dongle/Android_mk ${PROJECT_TOP}/external/usb_modeswitch/usb_dongle/Android.mk
+cp -rf ${PROJECT_TOP}/device/rockchip/common/external/skia/Android_bp ${PROJECT_TOP}/external/skia/Android.bp
 
 
 cp -rf ${PROJECT_TOP}/device/rockchip/common/external/minijail/libminijail.c ${PROJECT_TOP}/external/minijail/libminijail.c
